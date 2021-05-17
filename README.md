@@ -1,4 +1,4 @@
-# A Home Assistant custom component to get your KESB Bill Amount, Units consumed and Due Date information.
+# A Home Assistant custom component to get your KSEB Bill Amount, Units consumed and Due Date information.
 To get started put all the files from/custom_components/kseb/ here: <config directory>/custom_components/kseb/
 
 Example configuration.yaml:
