@@ -81,6 +81,7 @@ class KSEBBillData(object):
         self.consumerno = consumer_no
         self.username = username
         self.password = password
+        self.cert_path = "/config/custom_components/kseb/DigiCert.pem"
 
     @Throttle(MIN_TIME_BETWEEN_UPDATES)
     def update(self):
@@ -91,11 +92,11 @@ class KSEBBillData(object):
 
         try:
             s = requests.Session();
-            response = s.get(BASE_URL + "wssloginUser.do",verify="DigiCert.pem")
-            response = s.post(BASE_URL + "login", data=login_data, headers=headers, timeout=10,verify="DigiCert.pem")
+            response = s.get(BASE_URL + "wssloginUser.do",verify=self.cert_path)
+            response = s.post(BASE_URL + "login", data=login_data, headers=headers, timeout=10,verify=self.cert_path)
 
             option = "optionVal=" + self.consumerno
-            response = s.post(BASE_URL + "billHistorycheck", data=option, headers=headers,verify="DigiCert.pem")
+            response = s.post(BASE_URL + "billHistorycheck", data=option, headers=headers,verify=self.cert_path)
 
             jdata = json.loads(response.text)
             d = {}
