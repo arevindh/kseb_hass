@@ -92,11 +92,11 @@ class KSEBBillData(object):
 
         try:
             s = requests.Session();
-            response = s.get(BASE_URL + "wssloginUser.do",verify=self.cert_path)
-            response = s.post(BASE_URL + "login", data=login_data, headers=headers, timeout=10,verify=self.cert_path)
+            response = s.get(BASE_URL + "wssloginUser.do",verify=False)
+            response = s.post(BASE_URL + "login", data=login_data, headers=headers, timeout=10,verify=False)
 
             option = "optionVal=" + self.consumerno
-            response = s.post(BASE_URL + "billHistorycheck", data=option, headers=headers,verify=self.cert_path)
+            response = s.post(BASE_URL + "billHistorycheck", data=option, headers=headers,verify=False)
 
             jdata = json.loads(response.text)
             d = {}
