@@ -1,10 +1,10 @@
 {
     "domain": "kseb",
     "name": "KSEB Bill",
-    "documentation": "https://github.com/vaidyasr/kseb_hass",
+    "documentation": "https://github.com/arevindh/kseb_hass",
     "dependencies": [],
-    "codeowners": ["@vaidyasr"],
+    "codeowners": ["@vaidyasr","@arevindh"],
     "requirements": [
     ],
-    "version": "1.00.0"
+    "version": "1.0.2"
 }
