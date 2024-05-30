@@ -162,8 +162,8 @@ class KSEBBillSensor(Entity):
     def update(self):
         """Get the latest data and use it to update our sensor state."""
         self.data.update()
-        billdetails = self.data.data
-        if (billdetails):
+        if hasattr(self, 'data') and hasattr(self.data, 'data'):
+            billdetails = self.data.data
             if self.type == 'consumerNo':
                 self._state = billdetails['consumerNo']
             elif self.type == 'billMonth':
@@ -175,4 +175,6 @@ class KSEBBillSensor(Entity):
             elif self.type == 'totalConsumption':
                 self._state = billdetails['totalConsumption']    
             elif self.type == 'billAmount':
-                self._state = billdetails['billAmount']    
+                self._state = billdetails['billAmount']
+        else:
+            _LOGGER.error("Unable to connect to KSEB Portal")
